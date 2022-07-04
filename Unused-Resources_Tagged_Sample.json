@@ -1,0 +1,555 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 4,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "クエリ 1",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "resources\r\n| where type =~ \"Microsoft.Compute/Disks\"\r\n| count",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+              "settings": {},
+              "partHeader": {
+                "title": "ディスク総数",
+                "subtitle": ""
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 4,
+              "y": 0,
+              "colSpan": 4,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "クエリ 1",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "resources\r\n| where type =~ \"Microsoft.Compute/Disks\"\r\n| where properties.diskState == \"Unattached\"\r\n| count ",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+              "settings": {},
+              "partHeader": {
+                "title": "Unattached ディスク数",
+                "subtitle": ""
+              }
+            }
+          },
+          "2": {
+            "position": {
+              "x": 8,
+              "y": 0,
+              "colSpan": 10,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "クエリ 1",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "resources\r\n| where type =~ \"Microsoft.Compute/Disks\"\r\n| where properties.diskState == \"Unattached\"",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "value": true,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {},
+              "partHeader": {
+                "title": "Unattached ディスク一覧",
+                "subtitle": ""
+              }
+            }
+          },
+          "3": {
+            "position": {
+              "x": 0,
+              "y": 4,
+              "colSpan": 4,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "クエリ 1",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "resources\r\n| where type =~ \"Microsoft.network/publicipaddresses\"\r\n| count ",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+              "settings": {},
+              "partHeader": {
+                "title": "パブリック IP アドレス総数",
+                "subtitle": ""
+              }
+            }
+          },
+          "4": {
+            "position": {
+              "x": 4,
+              "y": 4,
+              "colSpan": 4,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "クエリ 1",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "resources\r\n| where type =~ \"Microsoft.network/publicipaddresses\"\r\n| where isnull(properties.ipConfiguration)\r\n| count ",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+              "settings": {},
+              "partHeader": {
+                "title": "Unattached パブリック IP アドレス数",
+                "subtitle": ""
+              }
+            }
+          },
+          "5": {
+            "position": {
+              "x": 8,
+              "y": 4,
+              "colSpan": 10,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "クエリ 1",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "resources\r\n| where type =~ \"Microsoft.network/publicipaddresses\"\r\n| where isnull(properties.ipConfiguration)",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "value": true,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {},
+              "partHeader": {
+                "title": "Unattached パブリック IP 一覧",
+                "subtitle": ""
+              }
+            }
+          },
+          "6": {
+            "position": {
+              "x": 0,
+              "y": 8,
+              "colSpan": 4,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "クエリ 1",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "resources\r\n| where type =~ \"Microsoft.Network/applicationGateways\"\r\n| count ",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+              "settings": {},
+              "partHeader": {
+                "title": "Application Gateway 総数",
+                "subtitle": ""
+              }
+            }
+          },
+          "7": {
+            "position": {
+              "x": 4,
+              "y": 8,
+              "colSpan": 4,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "クエリ 1",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "resources\r\n| where type =~ \"Microsoft.Network/applicationGateways\"\r\n| where properties.backendAddressPools.properties.backendAddresses == \"\"\r\n| count ",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+              "settings": {},
+              "partHeader": {
+                "title": "バックエンドが空の Application Gateway 数",
+                "subtitle": ""
+              }
+            }
+          },
+          "8": {
+            "position": {
+              "x": 8,
+              "y": 8,
+              "colSpan": 10,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "クエリ 1",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "resources\r\n| where type =~ \"Microsoft.Network/applicationGateways\"\r\n| where properties.backendAddressPools.properties.backendAddresses == \"\"",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "value": true,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {},
+              "partHeader": {
+                "title": "バックエンドが空の Application Gateway 一覧",
+                "subtitle": ""
+              }
+            }
+          },
+          "9": {
+            "position": {
+              "x": 0,
+              "y": 12,
+              "colSpan": 18,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "クエリ 1",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "formatResults",
+                  "value": true,
+                  "isOptional": true
+                },
+                {
+                  "name": "queryScope",
+                  "value": {
+                    "scope": 0,
+                    "values": []
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "Resources\r\n| where tags['environment']=='demo-env'",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {},
+              "partHeader": {
+                "title": "demo-env タグのリソース一覧",
+                "subtitle": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        }
+      }
+    }
+  },
+  "name": "Unused-Resources_Tagged_Sample",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "Unused-Resources_Tagged_Sample"
+  },
+  "apiVersion": "2015-08-01-preview"
+}
