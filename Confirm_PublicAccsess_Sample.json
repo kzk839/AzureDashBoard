@@ -1,0 +1,191 @@
+{
+    "properties": {
+      "lenses": {
+        "0": {
+          "order": 0,
+          "parts": {
+            "0": {
+              "position": {
+                "x": 0,
+                "y": 0,
+                "colSpan": 18,
+                "rowSpan": 5
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "クエリ 1",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "value": true,
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryScope",
+                    "value": {
+                      "scope": 2,
+                      "values": []
+                    },
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| where type =~ 'microsoft.compute/virtualmachines'\r\n| extend nics=array_length(properties.networkProfile.networkInterfaces)\r\n| mv-expand nic=properties.networkProfile.networkInterfaces\r\n| where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic)\r\n| project vmId = id, vmName = name,resourceGroup, subscriptionId, nicId = tostring(nic.id)\r\n| join kind=leftouter (\r\n    Resources\r\n    | where type =~ 'microsoft.network/networkinterfaces'\r\n    | extend ipConfigsCount=array_length(properties.ipConfigurations)\r\n    | mv-expand ipconfig=properties.ipConfigurations\r\n    | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true'\r\n    | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id))\r\non nicId\r\n| project-away nicId1\r\n| summarize by vmId, vmName, resourceGroup, subscriptionId, nicId, publicIpId\r\n| join kind=leftouter (\r\n    Resources\r\n    | where type =~ 'microsoft.network/publicipaddresses'\r\n    | project publicIpId = id, publicIpAddress = properties.ipAddress)\r\non publicIpId\r\n|where not(isnull(publicIpAddress))\r\n| project-away publicIpId1\r\n| project id=vmId, name=vmName, resourceGroup, subscriptionId, nicId, publicIpId, publicIpAddress",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+                "settings": {},
+                "partHeader": {
+                  "title": "パブリック IP を持つ VM",
+                  "subtitle": ""
+                }
+              }
+            },
+            "1": {
+              "position": {
+                "x": 0,
+                "y": 5,
+                "colSpan": 18,
+                "rowSpan": 5
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "クエリ 1",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryScope",
+                    "value": {
+                      "scope": 2,
+                      "values": []
+                    },
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "resources\r\n| where type == \"microsoft.storage/storageaccounts\"\r\n| where properties.publicNetworkAccess != \"Disabled\"\r\n| project id, name, resourceGroup, subscriptionId, publicAccess=properties.publicNetworkAccess",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "value": true,
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+                "settings": {},
+                "partHeader": {
+                  "title": "外部公開が許可されているストレージ アカウント",
+                  "subtitle": ""
+                }
+              }
+            },
+            "2": {
+              "position": {
+                "x": 0,
+                "y": 10,
+                "colSpan": 18,
+                "rowSpan": 5
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "クエリ 1",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "resources\r\n| where type == \"microsoft.sql/servers\"\r\n| where properties.publicNetworkAccess != \"Disabled\"\r\n| project id, name, resourceGroup, subscriptionId, publicAccess = properties.publicNetworkAccess",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "value": true,
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryScope",
+                    "value": {
+                      "scope": 2,
+                      "values": []
+                    },
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+                "settings": {},
+                "partHeader": {
+                  "title": "外部公開が許可されているAzure SQL Database",
+                  "subtitle": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "metadata": {
+        "model": {
+          "timeRange": {
+            "value": {
+              "relative": {
+                "duration": 24,
+                "timeUnit": 1
+              }
+            },
+            "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+          }
+        }
+      }
+    },
+    "name": "外部公開の設定確認サンプル",
+    "type": "Microsoft.Portal/dashboards",
+    "location": "INSERT LOCATION",
+    "tags": {
+      "hidden-title": "外部公開の設定確認サンプル"
+    },
+    "apiVersion": "2015-08-01-preview"
+  }
